@@ -1,18 +1,25 @@
 package hello.hellospring.order;
 
+import hello.hellospring.AppConfig;
 import hello.hellospring.member.Grade;
 import hello.hellospring.member.Member;
 import hello.hellospring.service.MemberService;
 import hello.hellospring.service.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
-
+    MemberService memberService;
+    OrderService orderService;
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
     @Test
     public void createOrder() throws Exception {
         //given
@@ -22,8 +29,8 @@ class OrderServiceTest {
 
         //when
         Order order = orderService.createOrder(memberId, "itemA", 10000);
-        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
         //then
+        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
 
 }
