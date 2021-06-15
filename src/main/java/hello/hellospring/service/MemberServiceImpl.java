@@ -2,12 +2,15 @@ package hello.hellospring.service;
 
 import hello.hellospring.member.Member;
 import hello.hellospring.member.MemberRepository;
-import hello.hellospring.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

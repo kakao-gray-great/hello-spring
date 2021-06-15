@@ -24,7 +24,7 @@ public class StatefulServiceTest {
 
     }
 
-    static class TestConfig {
+    static class  TestConfig {
 
         @Bean
         public StatefulService statefulService() {
