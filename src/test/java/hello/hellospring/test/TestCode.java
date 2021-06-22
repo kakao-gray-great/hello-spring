@@ -11,4 +11,11 @@ public class TestCode {
 
         Assertions.assertThat(title).isEqualTo("hello");
     }
+
+    @Test
+    public void test2() {
+        String title = "hello";
+
+        Assertions.assertThat(title).isEqualTo("hello");
+    }
 }
